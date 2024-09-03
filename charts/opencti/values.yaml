@@ -5,6 +5,7 @@ global:
   # -- Specifies the registry to pull images from. Leave empty for the default registry
   #
   imageRegistry: ""
+  busyboxImage: ""
   # -- Specifies the secrets to use for pulling images from private registries
   # Leave empty if no secrets are required
   # E.g.

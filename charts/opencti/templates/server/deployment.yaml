@@ -41,7 +41,7 @@ spec:
       {{- range $service := .Values.readyChecker.services }}
       - name: ready-checker-{{ $service.name }}
         {{- if $.Values.global.imageRegistry }}
-        image: "{{ $.Values.global.imageRegistry }}/busybox"
+        image: "{{ $.Values.global.imageRegistry }}/{{ $.Values.global.busyboxImage }}"
         {{- else }}
         image: busybox
         {{- end }}
