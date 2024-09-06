@@ -89,7 +89,7 @@ spec:
             {{- toYaml .Values.livenessProbeCustom | nindent 12 }}
             {{- else }}
             httpGet:
-              path: {{ .Values.service.healthPath | default (printf "/health?health_access_key=%s" .Values.envFromSecrets.APP__HEALTH_ACCESS_KEY) | quote }}
+              path: {{ .Values.service.healthPath | default (printf "/health?health_access_key=%s" .Values.env.APP__HEALTH_ACCESS_KEY) | quote }}
               port: {{ .Values.service.targetPort | default .Values.service.port }}
             failureThreshold: {{ .Values.livenessProbe.failureThreshold }}
             initialDelaySeconds: {{ .Values.livenessProbe.initialDelaySeconds }}
@@ -104,7 +104,7 @@ spec:
             {{- toYaml .Values.readinessProbeCustom | nindent 12 }}
             {{- else }}
             httpGet:
-              path: {{ .Values.service.healthPath | default (printf "/health?health_access_key=%s" .Values.envFromSecrets.APP__HEALTH_ACCESS_KEY) | quote }}
+              path: {{ .Values.service.healthPath | default (printf "/health?health_access_key=%s" .Values.env.APP__HEALTH_ACCESS_KEY) | quote }}
               port: {{ .Values.service.targetPort | default .Values.service.port }}
             failureThreshold: {{ .Values.readinessProbe.failureThreshold }}
             initialDelaySeconds: {{ .Values.readinessProbe.initialDelaySeconds }}
@@ -119,7 +119,7 @@ spec:
             {{- toYaml .Values.startupProbeCustom | nindent 12 }}
             {{- else }}
             httpGet:
-              path: {{ .Values.service.healthPath | default (printf "/health?health_access_key=%s" .Values.envFromSecrets.APP__HEALTH_ACCESS_KEY) | quote }}
+              path: {{ .Values.service.healthPath | default (printf "/health?health_access_key=%s" .Values.env.APP__HEALTH_ACCESS_KEY) | quote }}
               port: {{ .Values.service.targetPort | default .Values.service.port }}
             failureThreshold: {{ .Values.startupProbe.failureThreshold }}
             initialDelaySeconds: {{ .Values.startupProbe.initialDelaySeconds }}
